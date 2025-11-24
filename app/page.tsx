@@ -25,27 +25,39 @@ export default function App() {
         justifyContent: 'flex-start',
         maxWidth: 320,
         width: '100%',
-        paddingTop: '100px'
+        paddingTop: '100px',
+        minHeight: '100vh'
       }}>
-        <h1 className="text-4xl font-bold mb-8 text-gray-900">Hopfield Demo</h1>
-        <h2 className="text-xl font-bold mb-4 text-gray-800">Steps</h2>
-        <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-6">
-          <li>Draw an A, B, or C on the left grid and hit the update button to converge to the closest letter.</li>
-          <li>Switch the range to A-G and try the same process with a different letter.</li>
-          <li>Try drawing that letter on the right grid</li>
-          <li>See if you get better convergence on the right.</li>
-        </ol>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <h1 className="text-4xl font-bold mb-8 text-gray-900">Hopfield Demo</h1>
+          <h2 className="text-xl font-bold mb-4 text-gray-800">Steps</h2>
+          <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-6" style={{ textAlign: 'center' }}>
+            <li>Draw an A, B, or C on the left grid and hit the update button to converge to the closest letter.</li>
+            <li>Switch the range to A-G and try the same process with a different letter.</li>
+            <li>Try drawing that letter on the right grid</li>
+            <li>See if you get better convergence on the right.</li>
+          </ol>
 
-        <label htmlFor="range-dropdown" className="mb-2 text-gray-700 font-medium">Choose range:</label>
-        <select
-          id="range-dropdown"
-          value={selection}
-          onChange={handleSelectionChange}
-          className="px-4 py-2 border border-gray-300 rounded shadow-sm bg-white"
+          <label htmlFor="range-dropdown" className="mb-2 text-gray-700 font-medium">Choose range:</label>
+          <select
+            id="range-dropdown"
+            value={selection}
+            onChange={handleSelectionChange}
+            className="px-4 py-2 border border-gray-300 rounded shadow-sm bg-white mb-6"
+          >
+            <option value="A-C">A-C</option>
+            <option value="A-G">A-G</option>
+          </select>
+        </div>
+        
+        <a 
+          href="https://github.com/ssocolow/drawfield" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-sm text-gray-500 hover:text-gray-700 mt-auto mb-8"
         >
-          <option value="A-C">A-C</option>
-          <option value="A-G">A-G</option>
-        </select>
+          GitHub repo
+        </a>
       </div>
       <GridDrawerDense selection={selection} />
     </div>
